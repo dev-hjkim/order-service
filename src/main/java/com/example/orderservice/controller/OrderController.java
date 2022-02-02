@@ -41,8 +41,8 @@ public class OrderController {
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         OrderDto orderDto = mapper.map(orderDetails, OrderDto.class);
 
-        OrderDto createdOrder = orderService.createOrder(orderDto);
         orderDto.setUserId(userId);
+        OrderDto createdOrder = orderService.createOrder(orderDto);
         ResponseOrder responseOrder = mapper.map(createdOrder, ResponseOrder.class);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseOrder);
